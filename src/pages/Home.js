@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Post } from '../components/Post';
+import { Post } from '../Components/Post';
 
 export const Home = () => {
   const [posts, setPosts] = useState([]);
