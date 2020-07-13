@@ -1,27 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Home } from './pages/Home';
 import './App.css';
-import { Post } from './components/Post';
-import postData from './data';
-
-const mockPosts = [postData, postData, postData];
 
 function App() {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    // Define API call as async function
-    const getPosts = async () => {
-      const res = await fetch('http://localhost:1337/posts');
-      const data = await res.json();
-      setPosts(data);
-    };
-    // Call api
-    getPosts();
-  }, []);
-
   return (
     <div className='App'>
-      <Post posts={posts} />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/' component={Home} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
