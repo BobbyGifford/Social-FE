@@ -9,7 +9,7 @@ export const Post = ({ post }) => {
   const likes = post.likes;
 
   return (
-    <div className='Post'>
+    <div className='Post' key={post.id}>
       <img
         className='Post__Image'
         src={formatImageUrl(url)}
