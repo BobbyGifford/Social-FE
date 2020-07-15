@@ -18,7 +18,7 @@ export const Home = () => {
   return (
     <div className='Home'>
       {posts.map((post) => (
-        <Post post={post} />
+        <Post key={post.id} post={post} />
       ))}
     </div>
   );
