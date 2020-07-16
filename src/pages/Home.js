@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Post } from '../Components/Post';
 
 export const Home = () => {
@@ -18,7 +19,9 @@ export const Home = () => {
   return (
     <div className='Home'>
       {posts.map((post) => (
-        <Post key={post.id} post={post} />
+        <Link to={`/${post.id}`} key={post.id}>
+          <Post post={post} />
+        </Link>
       ))}
     </div>
   );
