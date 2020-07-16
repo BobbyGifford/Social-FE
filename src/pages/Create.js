@@ -8,16 +8,6 @@ export const Create = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!description) {
-      setError('Description required');
-      return;
-    }
-
-    if (!file) {
-      setError('Image required');
-      return;
-    }
-
     const formData = new FormData();
     formData.append('data', JSON.stringify({ description }));
     formData.append('files.image', file);
@@ -30,9 +20,11 @@ export const Create = () => {
 
       const data = await res.json();
 
-      console.log(data);
+      if (data.statusCode === 400) {
+        setError(data.message);
+      }
     } catch (err) {
-      setError(err);
+      setError('Sorry something went wrong. Try again.');
     }
   };
 
@@ -44,6 +36,7 @@ export const Create = () => {
 
       <form onSubmit={handleSubmit}>
         <input
+          required
           placeholder='Description'
           value={description}
           onChange={(e) => {
@@ -52,6 +45,7 @@ export const Create = () => {
           }}
         />
         <input
+          required
           placeholder='Add a file'
           onChange={(e) => {
             setError(null);
