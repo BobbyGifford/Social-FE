@@ -10,11 +10,10 @@ export const SinglePost = ({ match }) => {
     const fetchPost = async () => {
       const res = await fetch(`http://localhost:1337/posts/${id}`);
       const data = await res.json();
-      console.log(data);
       setPost(data);
     };
     fetchPost();
-  }, []);
+  }, [id]);
 
   // Takes a moment for image to load
   return <>{post.image ? <Post post={post} /> : <>Loading</>} </>;
